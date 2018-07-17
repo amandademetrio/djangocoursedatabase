@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <style>
+    h2 {
+        margin-top: 4%
+    }
+    .btn {
+        text-align: left
+    }
+    .red {
+        color:red
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add a new course</h2>
+        {% if messages %}
+            {% for message in messages %}
+                <p class="red">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <form action="/createcourse" method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" name="course_name" placeholder="Enter blog name">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="course_description" rows="3" placeholder="Enter a blog description"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary float-right" value="Submit">
+        </form>
+        <h2>Courses</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Course name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for course in courses %}
+                    <tr>
+                        <th>{{course.name}}</th>
+                        <td>{{course.description}}</td>
+                        <td>{{course.created_at}}</td>
+                        <td><a href="/delete/{{course.id}}" type="button" class="btn btn-danger btn-sm">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+</body>
+</html>

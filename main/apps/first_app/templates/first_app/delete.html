@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <style>
+    .container {
+        margin-top: 2%
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete the following course?</h2>
+        <p>Name: {{course_to_be_edited.name}}</p>
+        <p>Description: {{course_to_be_edited.description}}</p>
+        <a href="/" type="button" class="btn btn-secondary">No</a>
+        <a href="/processdelete/{{course_to_be_edited.id}}" type="button" class="btn btn-danger">Yes! I want to delete this</a>
+    </div>
+</body>
+</html>
