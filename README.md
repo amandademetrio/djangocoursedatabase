@@ -1,3 +1,1 @@
-# djangocoursedatabase
-
-Course database project in Django
+# Simple course database (add/remove) made with Django
